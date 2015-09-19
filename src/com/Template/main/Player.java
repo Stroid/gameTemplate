@@ -11,15 +11,11 @@ public class Player extends gameObject{
 	}
 
 	public void tick(){
-		
-		
-		if(x <= 0 && velX < 0) velX = 0;
-		if(y <= 0 && velY < 0) velY = 0;
-		if(x >= Game.WIDTH - 40 && velX > 0) velX = 0;
-		if(y >= Game.HEIGHT - 65 && velY > 0) velY = 0;
-		
 		x += velX;
 		y += velY;
+		
+		x = Game.clamp(x, 0, Game.WIDTH - 38);
+		y = Game.clamp(y, 0, Game.HEIGHT- 60);
 	}
 
 	public void render(Graphics g) {
