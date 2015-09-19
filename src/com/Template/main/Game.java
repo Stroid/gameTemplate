@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.LinkedList;
 
 public class Game extends Canvas implements Runnable{
 
@@ -84,6 +85,15 @@ public class Game extends Canvas implements Runnable{
 			return var;
 		}
 		
+	}
+	
+	public static int firstInList(LinkedList<Integer> keys, LinkedList<Integer> pressedKeys){
+		for(int i = 0; i < pressedKeys.size(); i++){
+			if(keys.contains(pressedKeys.get(i))){
+				return pressedKeys.get(i);
+			}
+		}
+		return 0;
 	}
 	
 	private void tick() {

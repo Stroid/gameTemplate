@@ -2,19 +2,26 @@ package com.Template.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.LinkedList;
+
 
 public class KeyInput extends KeyAdapter{
 
 	private Handeler handeler;
+	LinkedList<Integer> keys = new LinkedList<Integer>();
+	
 	
 	public KeyInput(Handeler handeler){
 		this.handeler = handeler;
+		
+		
 	}
 	
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		
+		if(! keys.contains(key)) keys.add(key);
+		System.out.println(keys.size());
 		
 		for(int i = 0; i<handeler.object.size(); i++){
 			gameObject tempObject	= handeler.object.get(i);
@@ -42,6 +49,9 @@ public class KeyInput extends KeyAdapter{
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
+		
+		keys.removeFirstOccurrence(key);
+		System.out.println(keys.size());
 		
 		for(int i = 0; i<handeler.object.size(); i++){
 			gameObject tempObject	= handeler.object.get(i);
