@@ -8,9 +8,8 @@ public class Ball extends gameObject{
 	public Ball(int x, int y,int sizeX, int sizeY, ID id) {
 		super(x, y,sizeX, sizeY, id);
 		
-		velX = 1;
-		velY = 0;
-		
+		velX = 5;
+		velY = 5;
 	}
 
 	
@@ -18,9 +17,8 @@ public class Ball extends gameObject{
 		x += velX;
 		y += velY;
 		
-		
-		if(x < 0 || x > Game.WIDTH - 32) velX *= -1;
-		if(y < 0 || y > Game.HEIGHT) velY *= -1;
+		if(x <= 0 || x >= Game.WIDTH - sizeX) velX *= -1;
+		if(y <= 0 || y >= Game.HEIGHT - sizeY) velY *= -1;
 		
 	}
 
@@ -29,7 +27,8 @@ public class Ball extends gameObject{
 	
 		g.setColor(Color.red);
 		
-		g.fillRect(x, y, sizeX, sizeY);
+		g.fillRect(x, y, sizeY, sizeX);
+		
 	}
 
 }

@@ -22,9 +22,9 @@ public class Game extends Canvas implements Runnable{
 		this.addKeyListener(new KeyInput(handeler));
 		
 		new Window(WIDTH,HEIGHT,title,this);
-		
+		System.out.println(HEIGHT + ", " + WIDTH);
 		handeler.addObject(new Player(WIDTH/2, HEIGHT/2-32/2, 32, 32, ID.Player));
-		handeler.addObject(new Ball(WIDTH/2, HEIGHT/2-32/2, 32, 32, ID.Ball));
+		handeler.addObject(new Ball(194, 100, 10, 10, ID.Ball));
 	}
 
 	public synchronized void start(){

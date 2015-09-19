@@ -11,6 +11,13 @@ public class Player extends gameObject{
 	}
 
 	public void tick(){
+		
+		
+		if(x <= 0 && velX < 0) velX = 0;
+		if(y <= 0 && velY < 0) velY = 0;
+		if(x >= Game.WIDTH - 40 && velX > 0) velX = 0;
+		if(y >= Game.HEIGHT - 65 && velY > 0) velY = 0;
+		
 		x += velX;
 		y += velY;
 	}
