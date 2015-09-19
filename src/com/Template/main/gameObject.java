@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public abstract class gameObject {
 
-	protected int x,y;
+	protected int x,y,s;
 	protected int sizeX,sizeY;
 	protected int velX,velY;
 	protected ID id;
@@ -12,9 +12,11 @@ public abstract class gameObject {
 	public gameObject(int x, int y,int sizeX, int sizeY, ID id){
 		this.x = x;
 		this.y = y;
+		this.s = 5;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		this.id = id;
+		
 	}
 	
 	public abstract void tick();
@@ -25,6 +27,9 @@ public abstract class gameObject {
 	}
 	public void setY(int y){
 		this.y = y;
+	}
+	public void setS(int s){
+		this.s = s;
 	}
 	public void setId(ID id){
 		this.id = id;

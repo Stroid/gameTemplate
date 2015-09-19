@@ -10,6 +10,8 @@ public class Ball extends gameObject{
 		
 		velX = 5;
 		velY = 5;
+		x = Game.WIDTH;
+		
 	}
 
 	
@@ -17,8 +19,8 @@ public class Ball extends gameObject{
 		x += velX;
 		y += velY;
 		
-		if(x <= 0 || x >= Game.WIDTH - sizeX) velX *= -1;
-		if(y <= 0 || y >= Game.HEIGHT - sizeY) velY *= -1;
+		if(x <= 0 || x >= Game.WIDTH - 15) velX *= -1;
+		if(y <= 0 || y >= Game.HEIGHT - 38) velY *= -1;
 		
 	}
 

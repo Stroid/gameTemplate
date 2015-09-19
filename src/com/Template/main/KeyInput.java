@@ -7,72 +7,70 @@ import java.util.LinkedList;
 
 public class KeyInput extends KeyAdapter{
 
-	private Handeler handeler;
+	private Handler handler;
+	private int vel;
 	LinkedList<Integer> keys = new LinkedList<Integer>();
-	
-	
-	public KeyInput(Handeler handeler){
-		this.handeler = handeler;
-		
-		
+
+
+	public KeyInput(Handler handler){
+		this.handler = handler;
+
+
 	}
-	
+
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
+
+		//exit game if escape key is pressed
+		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
 		
+		//add the ascii value of the key
 		if(! keys.contains(key)) keys.add(key);
 		System.out.println(keys.size());
+
 		
-		for(int i = 0; i<handeler.object.size(); i++){
-			gameObject tempObject	= handeler.object.get(i);
-			
+		for(int i = 0; i<handler.object.size(); i++){
+			gameObject tempObject	= handler.object.get(i);
+
 			if(tempObject.getId() == ID.Player){
 				//check keyPress for Player 1
-				
-				if(key == KeyEvent.VK_W) tempObject.setVelY(-5);
-				if(key == KeyEvent.VK_A) tempObject.setVelX(-5);
-				if(key == KeyEvent.VK_S) tempObject.setVelY(5);
-				if(key == KeyEvent.VK_D) tempObject.setVelX(5);
+				vel = tempObject.s;
+				if(key == KeyEvent.VK_W) tempObject.setVelY(-vel);
+				if(key == KeyEvent.VK_A) tempObject.setVelX(-vel);
+				if(key == KeyEvent.VK_S) tempObject.setVelY(vel);
+				if(key == KeyEvent.VK_D) tempObject.setVelX(vel);
 			}
-			else if(tempObject.getId() == ID.Player2){
-				//check keyPress for Player 2
-				
-				if(key == KeyEvent.VK_UP) tempObject.setVelY(-5);
-				if(key == KeyEvent.VK_LEFT) tempObject.setVelX(-5);
-				if(key == KeyEvent.VK_DOWN) tempObject.setVelY(5);
-				if(key == KeyEvent.VK_RIGHT) tempObject.setVelX(5);
-			}
-			
-			if(key == KeyEvent.VK_ESCAPE) System.exit(1);
 		}
+		
 	}
-	
+
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
-		
+
 		keys.removeFirstOccurrence(key);
 		System.out.println(keys.size());
-		
-		for(int i = 0; i<handeler.object.size(); i++){
-			gameObject tempObject	= handeler.object.get(i);
-			
+
+
+		//go thru every object in handler
+		for(int i = 0; i<handler.object.size(); i++){
+			gameObject tempObject	= handler.object.get(i);
+
+			//create a temporary object
 			if(tempObject.getId() == ID.Player){
 				//check keyReleased for Player 1
-				
-				if(key == KeyEvent.VK_W) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_A) tempObject.setVelX(0);
-				if(key == KeyEvent.VK_S) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_D) tempObject.setVelX(0);
+				vel = tempObject.s;
+				if(keys.contains(KeyEvent.VK_S)) tempObject.setVelY(vel);
+				else if(keys.contains(KeyEvent.VK_W))  tempObject.setVelY(-vel);
+				else tempObject.setVelY(0);
+
+				if(keys.contains(KeyEvent.VK_D)) tempObject.setVelX(vel);
+				else if(keys.contains(KeyEvent.VK_A))  tempObject.setVelX(-vel);
+				else tempObject.setVelX(0);
+
+				//if(key == KeyEvent.VK_A) tempObject.setVelX(0);
+				//if(key == KeyEvent.VK_D) tempObject.setVelX(0);
 			}
-			else if(tempObject.getId() == ID.Player2){
-				//check keyReleased for Player 2
-				
-				if(key == KeyEvent.VK_UP) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_LEFT) tempObject.setVelX(0);
-				if(key == KeyEvent.VK_DOWN) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_RIGHT) tempObject.setVelX(0);
-			}	
 		}
 	}
-	
+
 }

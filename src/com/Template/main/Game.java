@@ -13,19 +13,20 @@ public class Game extends Canvas implements Runnable{
 	private static final String title = "Template";
 	
 	
+	
 	Thread thread;
 	private static boolean running = false;
 	
-	private Handeler handeler; 
+	private Handler handler; 
 	 
 	public Game(){
-		handeler = new Handeler();
-		this.addKeyListener(new KeyInput(handeler));
+		handler = new Handler();
+		this.addKeyListener(new KeyInput(handler));
 		
 		new Window(WIDTH,HEIGHT,title,this);
 		System.out.println(HEIGHT + ", " + WIDTH);
-		handeler.addObject(new Player(WIDTH/2, HEIGHT/2-32/2, 32, 32, ID.Player));
-		handeler.addObject(new Ball(194, 100, 10, 10, ID.Ball));
+		handler.addObject(new Player(WIDTH/2, HEIGHT/2-32/2, 32, 32, ID.Player));
+		handler.addObject(new Ball(194, 100, 10, 10, ID.Ball));
 	}
 
 	public synchronized void start(){
@@ -97,7 +98,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	private void tick() {
-		handeler.tick();
+		handler.tick();
 		
 	}
 
@@ -112,7 +113,7 @@ public class Game extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		handeler.render(g);
+		handler.render(g);
 		
 		
 		
