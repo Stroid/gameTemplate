@@ -1,4 +1,4 @@
-package com.company.GameMecanics;
+package com.company;
 
 import com.company.gameObjects.GameObject;
 import com.company.gameObjects.ID;

@@ -1,17 +1,12 @@
-package com.company;
+package com.company.GameMecanics;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow extends JFrame {
-    public static final int SCREEN_WIDTH = 1000;
-    public static final int SCREEN_HEIGHT = 600;
-
     private static final long serialVersionUID = 1L;
 
     public GameWindow(GameEngine game) {
-        game.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        game.setFocusable(true);
         this.add(game);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
